@@ -37,11 +37,15 @@ public class MemberAdaptor {
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<MemberInfoRequestDto> entity = new HttpEntity<>(requestDto, headers);
 
-        return restTemplate.exchange(
+        ResponseEntity<MemberInfoResponseDto> exchange = restTemplate.exchange(
                 gateWayConfig.getGatewayUrl() + "/api/login",
                 HttpMethod.POST,
                 entity,
                 MemberInfoResponseDto.class
         );
+
+        log.info("exchange = {}", exchange);
+
+        return exchange;
     }
 }
