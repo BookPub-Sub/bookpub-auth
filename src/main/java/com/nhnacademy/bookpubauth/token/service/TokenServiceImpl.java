@@ -44,6 +44,7 @@ public class TokenServiceImpl implements TokenService {
     @Override
     public String tokenIssued(Long userNo,
                               Collection<? extends GrantedAuthority> authorities) {
+        log.info("tokenIssued authorities = {}", authorities);
         String memberUuid = UUID.randomUUID().toString();
 
         String refreshToken = jwtUtil.createRefreshToken(memberUuid, authorities);

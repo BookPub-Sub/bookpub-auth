@@ -38,10 +38,15 @@ public class CustomAuthenticationProvider extends DaoAuthenticationProvider {
             throw new NotMatchMemberLoginInfo();
         }
 
-        return new UsernamePasswordAuthenticationToken(
+
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                 user.getUsername(),
                 user.getPassword(),
                 user.getAuthorities());
+        log.info("UsernamePasswordAuthenticationToken user = {}", user);
+        log.info("UsernamePasswordAuthenticationToken token = {}", authentication);
+
+        return authenticationToken;
     }
 
 

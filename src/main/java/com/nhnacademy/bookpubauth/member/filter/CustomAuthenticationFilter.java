@@ -65,6 +65,10 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
         response.setHeader(AUTH_HEADER, TOKEN_TYPE + accessToken);
         response.setHeader(EXP_HEADER, String.valueOf(
                 new Date().getTime() + ACCESS_TOKEN_VALID_TIME));
+
+        log.info("successfulAuthentication accessToken = {}", accessToken);
+        log.info("successfulAuthentication response = {}", response.getHeader(AUTH_HEADER));
+        log.info("successfulAuthentication response = {}", response.getHeader(EXP_HEADER));
     }
 
 }
