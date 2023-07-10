@@ -43,8 +43,6 @@ public class CustomAuthenticationProvider extends DaoAuthenticationProvider {
                 user.getUsername(),
                 user.getPassword(),
                 user.getAuthorities());
-        log.info("UsernamePasswordAuthenticationToken user = {}", user);
-        log.info("UsernamePasswordAuthenticationToken token = {}", authentication);
 
         return authenticationToken;
     }

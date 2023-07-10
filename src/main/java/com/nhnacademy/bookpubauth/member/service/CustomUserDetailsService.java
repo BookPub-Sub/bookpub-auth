@@ -40,7 +40,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         try {
             responseMemberData = memberAdaptor.loginRequest(new MemberInfoRequestDto(userId));
-            log.info("response member data = {}", responseMemberData);
         } catch (HttpClientErrorException e) {
             throw new NotMemberBookpubSite();
         }
@@ -51,7 +50,6 @@ public class CustomUserDetailsService implements UserDetailsService {
                 member.getAuthorities().stream().map(SimpleGrantedAuthority::new)
                         .collect(Collectors.toList());
 
-        log.info("final user = {}", new User(member.getMemberNo().toString(), member.getMemberPwd(), grantedAuthorities));
 
         return new User(member.getMemberNo().toString(), member.getMemberPwd(), grantedAuthorities);
     }
